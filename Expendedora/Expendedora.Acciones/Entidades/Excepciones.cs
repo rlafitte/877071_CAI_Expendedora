@@ -26,7 +26,7 @@ namespace Expendedora.Libreria.Entidades
     {
 
     }
-    public class OperacionInvalida : Excepciones
+    public class OperacionInvalida : Exception 
     {
 
     }

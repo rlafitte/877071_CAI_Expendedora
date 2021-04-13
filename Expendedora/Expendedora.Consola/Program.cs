@@ -15,6 +15,7 @@ namespace Expendedora.Consola
             bool flag = true;
             string _respuesta="";
             Lata L = new Lata();
+            Controlador C = new Controlador();
             while (flag)
             {
                 Console.WriteLine("Bienvenido. Ingrese la opción deseada: ");
@@ -26,8 +27,17 @@ namespace Expendedora.Consola
                     "6 - Listar latas disponibles - detalle completo" + Environment.NewLine);
 
                 _respuesta = Console.ReadLine();
-                
+                try
+                {
+                C.SeleccionarOpcion(_respuesta);
+                    flag = false;
+                }
+                catch (OperacionInvalida Ex1)
+                {
+                    Console.WriteLine("Operación inválida. Intente nuevamente");
+                }
             }
+            
         }
     }
 }
