@@ -14,7 +14,8 @@ namespace Expendedora.Consola
         {
             bool flag = true;
 
-            string _respuesta="";
+            string _respuesta = "";
+            string msg = "";
 
             Lata L = new Lata();
             Controlador C = new Controlador();
@@ -38,6 +39,20 @@ namespace Expendedora.Consola
                         case "1": C.EncenderMaquina();
                             Console.WriteLine("La máquina fue encendida a las: " + System.DateTime.Now);
                             Console.ReadLine();
+                            break;
+                        case "2": C.MostrarLatas(out msg);
+                            Console.WriteLine(msg);
+                            Console.ReadLine();
+                            break;
+                        case "3":
+                            try
+                            {
+                                C.AgregarLata(L);
+                            }
+                            catch (MaquinaApagada ex)
+                            {
+                                Console.WriteLine("La máquina está apagada.");
+                            }
                             break;
                         default:
                             break;

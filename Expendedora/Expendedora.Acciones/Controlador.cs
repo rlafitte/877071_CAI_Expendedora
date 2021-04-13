@@ -16,10 +16,35 @@ namespace Expendedora.Libreria.Entidades
         }
 
         public List<Lata> _latas = new List<Lata>();
+        public void MostrarLatas(out string msg)
+        {
+            msg = "";
+            //Lata L = new Lata();
+            //Lata L2 = new Lata();
+            //L.Codigo = "1";
+            //L.Nombre = "pepe";
+            //L.Cantidad = 2;            
+            //L2.Codigo = "4";
+            //L2.Nombre = "pape";
+            //L2.Cantidad = 5;
+            //_latas.Add(L);
+            //_latas.Add(L2);
+            foreach (Lata i in _latas)
+            {
+                msg += i.Codigo + ")" + i.Nombre + "[" + i.Cantidad + "]" + Environment.NewLine;
+            }
+        }
         public void AgregarLata(Lata L)
         {
+            if (_maquina)
+            {
             _latas.Add(L);
             return;
+            }
+            else
+            {
+                throw new MaquinaApagada();
+            }
         }
         public Lata ExtraerLata(string str, double dou)
         {
