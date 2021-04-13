@@ -12,7 +12,7 @@ namespace Expendedora.Libreria.Entidades
         bool _encendida = false;
         public List<Lata> _latas = new List<Lata>();
         private string _proveedor;
-        private int _capacidad;
+        private int _capacidad = 50; //arbitrariamente determinamos capacidad máxima en 50 latas en total
         private double _dinero;
 
         public Controlador()
@@ -23,16 +23,16 @@ namespace Expendedora.Libreria.Entidades
         public void MostrarLatas(out string msg)
         {
             msg = "";
-            Lata L = new Lata();
-            Lata L2 = new Lata();
-            L.Codigo = "1";
-            L.Nombre = "pepe";
-            L.Cantidad = 2;
-            L2.Codigo = "4";
-            L2.Nombre = "pape";
-            L2.Cantidad = 5;
-            _latas.Add(L);
-            _latas.Add(L2);
+            //Lata L = new Lata();
+            //Lata L2 = new Lata();
+            //L.Codigo = "1";
+            //L.Nombre = "pepe";
+            //L.Cantidad = 2;
+            //L2.Codigo = "4";
+            //L2.Nombre = "pape";
+            //L2.Cantidad = 5;
+            //_latas.Add(L);
+            //_latas.Add(L2);
             foreach (Lata i in _latas)
             {
                 msg += i.Codigo + ")" + i.Nombre + "[" + i.Cantidad + "]" + Environment.NewLine;
@@ -45,6 +45,7 @@ namespace Expendedora.Libreria.Entidades
                if (!BuscarLata(L.Codigo))
                 {
                  _latas.Add(L);
+                 _capacidad -= L.Cantidad;
                  return;
                 }
                else
@@ -64,14 +65,20 @@ namespace Expendedora.Libreria.Entidades
             Lata _lataBuscada = new Lata();
             try
             {
-            _lataBuscada = _latas.FirstOrDefault(i => i.Codigo == codigo);
+            _lataBuscada = _latas.SingleOrDefault(i => i.Codigo == codigo);
             //if (_lataBuscada.Codigo == null)
             //    {
-                    if (string.IsNullOrEmpty(_lataBuscada.Codigo))
+                    try
+                    {
+                    if (_lataBuscada.Codigo!=null)
                     {
                     flag2 = false;
                     }
-                //}
+                    }
+                    catch (NullReferenceException ex)
+                    {
+
+                    }
 
             }
             catch (NullReferenceException ex)
@@ -150,8 +157,12 @@ namespace Expendedora.Libreria.Entidades
                                 Console.WriteLine("Ingrese la cantidad de la lata");
                                 try
                                 {
-                                    L_new.Cantidad = Convert.ToInt32(Console.ReadLine());
-                                    
+                                        L_new.Cantidad = Convert.ToInt32(Console.ReadLine());
+                                          if (_capacidad < L_new.Cantidad)
+                                          {
+                                            throw new CapacidadInsuficienteException();
+                                          }
+                                          
                                     
                                 }
                                 catch (Exception ex)

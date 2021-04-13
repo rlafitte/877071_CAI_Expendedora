@@ -60,6 +60,11 @@ namespace Expendedora.Consola
                                 Console.WriteLine("El código ingresado ya existe o no es válido.");
                                 Console.ReadLine();
                             }
+                            catch (CapacidadInsuficienteException ex)
+                            {
+                                Console.WriteLine("No hay más capacidad de almacenamiento.");
+                                Console.ReadLine();
+                            }
                             break;
                         case "99":
                             flag = false;
