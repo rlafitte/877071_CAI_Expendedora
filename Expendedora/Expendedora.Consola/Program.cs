@@ -27,7 +27,9 @@ namespace Expendedora.Consola
                     "3 - Insertar lata" + Environment.NewLine +
                     "4 - Comprar lata" + Environment.NewLine +
                     "5 - Consultar saldo" + Environment.NewLine +
-                    "6 - Listar latas disponibles - detalle completo" + Environment.NewLine);
+                    "6 - Listar latas disponibles - detalle completo" + Environment.NewLine +
+                    "99 - Salir" + Environment.NewLine)
+                    ;
 
                 _respuesta = Console.ReadLine();
                 try
@@ -38,26 +40,36 @@ namespace Expendedora.Consola
                     {
                         case "1": C.EncenderMaquina();
                             Console.WriteLine("La máquina fue encendida a las: " + System.DateTime.Now);
-                            Console.ReadLine();
                             break;
                         case "2": C.MostrarLatas(out msg);
                             Console.WriteLine(msg);
-                            Console.ReadLine();
                             break;
                         case "3":
                             try
                             {
+                                C.PedirDatos();
                                 C.AgregarLata(L);
                             }
                             catch (MaquinaApagada ex)
                             {
                                 Console.WriteLine("La máquina está apagada.");
+                                Console.ReadLine();
                             }
+                            catch (CodigoYaExistente ex)
+                            {
+                                Console.WriteLine("El código ingresado ya existe.");
+                                Console.ReadLine();
+                            }
+                            break;
+                        case "99":
+                            flag = false;
+                            Console.WriteLine("Gracias por utilizar la expendedora. Presione cualquier tecla para salir.");
+                            Console.ReadLine();
                             break;
                         default:
                             break;
                     }
-                    flag = false;
+                    //flag = false;
                 }
                 catch (OperacionInvalida Ex1)
                 {

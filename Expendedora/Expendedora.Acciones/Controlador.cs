@@ -19,16 +19,16 @@ namespace Expendedora.Libreria.Entidades
         public void MostrarLatas(out string msg)
         {
             msg = "";
-            //Lata L = new Lata();
-            //Lata L2 = new Lata();
-            //L.Codigo = "1";
-            //L.Nombre = "pepe";
-            //L.Cantidad = 2;            
-            //L2.Codigo = "4";
-            //L2.Nombre = "pape";
-            //L2.Cantidad = 5;
-            //_latas.Add(L);
-            //_latas.Add(L2);
+            Lata L = new Lata();
+            Lata L2 = new Lata();
+            L.Codigo = "1";
+            L.Nombre = "pepe";
+            L.Cantidad = 2;
+            L2.Codigo = "4";
+            L2.Nombre = "pape";
+            L2.Cantidad = 5;
+            _latas.Add(L);
+            _latas.Add(L2);
             foreach (Lata i in _latas)
             {
                 msg += i.Codigo + ")" + i.Nombre + "[" + i.Cantidad + "]" + Environment.NewLine;
@@ -38,13 +38,32 @@ namespace Expendedora.Libreria.Entidades
         {
             if (_maquina)
             {
-            _latas.Add(L);
-            return;
+               if (!BuscarLata(L.Codigo))
+                {
+                 _latas.Add(L);
+                 return;
+                }
+               else
+                {
+                    throw new CodigoYaExistente();
+                }
             }
             else
             {
                 throw new MaquinaApagada();
             }
+        }
+
+        public bool BuscarLata(string codigo)
+        {
+            bool flag2 = true;
+            Lata _lataBuscada = new Lata();
+            _lataBuscada = _latas.FirstOrDefault(i => i.Codigo == codigo);
+            if (string.IsNullOrEmpty(_lataBuscada.Codigo))
+            {
+                flag2 = false;
+            }
+            return flag2;
         }
         public Lata ExtraerLata(string str, double dou)
         {
@@ -78,11 +97,66 @@ namespace Expendedora.Libreria.Entidades
         public void SeleccionarOpcion (string id)
         {
             int _id = Int32.Parse(id);
-            if (_id > 6 || _id < 1)
+            if ((_id > 6 || _id < 1) && _id != 99)
             {
                 throw new OperacionInvalida();
             }
 
         }
+        public void PedirDatos ()
+        {
+            Lata L_new = new Lata();
+            Console.WriteLine("Ingrese el código de lata");
+            try
+            {
+                L_new.Codigo = Console.ReadLine();
+                Console.WriteLine("Ingrese el nombre de la lata");
+                try
+                {
+                    L_new.Nombre = Console.ReadLine();
+                    Console.WriteLine("Ingrese el sabor de la lata");
+                    try
+                    {
+                    L_new.Sabor = Console.ReadLine();
+                        Console.WriteLine("Ingrese el precio de la lata");
+                        try
+                        {
+                            L_new.Precio = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Ingrese el volumen de la lata");
+                            try
+                            {
+                                L_new.Volumen = Convert.ToDouble(Console.ReadLine());
+                                Console.WriteLine("Ingrese la cantidad de la lata");
+                                try
+                                {
+                                    L_new.Cantidad = Convert.ToInt32(Console.ReadLine());
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            catch (CodigoInvalidoException cod)
+            {
+
+            }
+    }
+
     }
 }

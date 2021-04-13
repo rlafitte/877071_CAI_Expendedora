@@ -33,5 +33,9 @@ namespace Expendedora.Libreria.Entidades
     public class MaquinaApagada : Exception
     {
 
+    }    
+    public class CodigoYaExistente : Exception
+    {
+
     }
 }
