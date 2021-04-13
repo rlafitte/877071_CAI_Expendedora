@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Expendedora.Acciones\Expendedora.Acciones.csproj">
+      <Project>{ba17575f-64cc-4e27-af04-fb75a647bf0c}</Project>
+      <Name>Expendedora.Acciones</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
