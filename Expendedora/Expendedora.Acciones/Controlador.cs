@@ -58,12 +58,26 @@ namespace Expendedora.Libreria.Entidades
         {
             bool flag2 = true;
             Lata _lataBuscada = new Lata();
-            _lataBuscada = _latas.FirstOrDefault(i => i.Codigo == codigo);
-            if (string.IsNullOrEmpty(_lataBuscada.Codigo))
+            try
             {
-                flag2 = false;
+            _lataBuscada = _latas.FirstOrDefault(i => i.Codigo == codigo);
+            //if (_lataBuscada.Codigo == null)
+            //    {
+                    if (string.IsNullOrEmpty(_lataBuscada.Codigo))
+                    {
+                    flag2 = false;
+                    }
+                //}
+
             }
-            return flag2;
+            catch (NullReferenceException ex)
+            {
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return flag2;          
         }
         public Lata ExtraerLata(string str, double dou)
         {
@@ -103,9 +117,12 @@ namespace Expendedora.Libreria.Entidades
             }
 
         }
-        public void PedirDatos ()
-        {
+        public void PedirDatos(out Lata L)
+        {      
+            if (_maquina)
+            {
             Lata L_new = new Lata();
+            L = L_new;
             Console.WriteLine("Ingrese el código de lata");
             try
             {
@@ -130,11 +147,17 @@ namespace Expendedora.Libreria.Entidades
                                 try
                                 {
                                     L_new.Cantidad = Convert.ToInt32(Console.ReadLine());
+                                    
+                                    
                                 }
                                 catch (Exception ex)
                                 {
 
                                 }
+                            }
+                            catch (Exception ex)
+                            {
+
                             }
                         }
                         catch (Exception ex)
@@ -156,7 +179,12 @@ namespace Expendedora.Libreria.Entidades
             {
 
             }
-    }
+            }
+            else
+            {
+                throw new MaquinaApagada();
+            }
+        }
 
     }
 }

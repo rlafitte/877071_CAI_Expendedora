@@ -47,7 +47,7 @@ namespace Expendedora.Consola
                         case "3":
                             try
                             {
-                                C.PedirDatos();
+                                C.PedirDatos(out L);
                                 C.AgregarLata(L);
                             }
                             catch (MaquinaApagada ex)
@@ -57,7 +57,7 @@ namespace Expendedora.Consola
                             }
                             catch (CodigoYaExistente ex)
                             {
-                                Console.WriteLine("El código ingresado ya existe.");
+                                Console.WriteLine("El código ingresado ya existe o no es válido.");
                                 Console.ReadLine();
                             }
                             break;
