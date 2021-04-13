@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expendedora.Consola", "Expendedora.Consola\Expendedora.Consola.csproj", "{18EE3993-5BA7-4DBA-84BD-59BFB7F80773}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expendedora.Acciones", "Expendedora.Acciones\Expendedora.Acciones.csproj", "{BA17575F-64CC-4E27-AF04-FB75A647BF0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expendedora.Libreria", "Expendedora.Acciones\Expendedora.Libreria.csproj", "{BA17575F-64CC-4E27-AF04-FB75A647BF0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

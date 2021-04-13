@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Expendedora.Acciones.Entidades;
+using Expendedora.Libreria.Entidades;
 
-namespace Expendedora.Acciones.Entidades
+namespace Expendedora.Libreria.Entidades
 {
     public class Excepciones : Exception
     {

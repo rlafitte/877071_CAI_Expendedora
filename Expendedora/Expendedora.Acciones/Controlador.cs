@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Expendedora.Acciones.Entidades;
-using Expendedora.Acciones;
+using Expendedora.Libreria.Entidades;
 
-namespace Expendedora.Acciones.Entidades
+namespace Expendedora.Libreria.Entidades
 {
     public class Controlador
     {
+        public Controlador()
+        {
+
+        }
 
         public List<Lata> _latas = new List<Lata>();
         public void AgregarLata(Lata L)
