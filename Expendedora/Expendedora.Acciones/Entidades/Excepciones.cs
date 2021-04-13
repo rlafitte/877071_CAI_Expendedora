@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Expendedora.Acciones.Entidades;
 
 namespace Expendedora.Acciones.Entidades
 {
@@ -22,6 +23,10 @@ namespace Expendedora.Acciones.Entidades
 
     }
     public class CodigoInvalidoException : Exception
+    {
+
+    }
+    public class OperacionInvalida : Excepciones
     {
 
     }

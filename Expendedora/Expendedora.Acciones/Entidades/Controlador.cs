@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Expendedora.Acciones.Entidades;
+using Expendedora.Acciones;
 
-namespace Expendedora.Acciones
+namespace Expendedora.Acciones.Entidades
 {
-    public class Acciones
+    public class Controlador
     {
+
+        public List<Lata> _latas = new List<Lata>();
         public void AgregarLata(Lata L)
         {
-
+            _latas.Add(L);
+            return;
         }
         public Lata ExtraerLata(string str, double dou)
         {
@@ -38,6 +42,15 @@ namespace Expendedora.Acciones
         {
             bool flag;
             return;
+        }
+        public void SeleccionarOpcion (string id)
+        {
+            int _id = Int32.Parse(id);
+            if (_id > 6 || _id < 1)
+            {
+                throw new OperacionInvalida();
+            }
+
         }
     }
 }

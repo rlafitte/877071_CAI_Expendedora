@@ -1,0 +1,6 @@
+C:\Users\renar\Desktop\CAI\QuintaClase\877071_CAI_Expendedora\Expendedora\Expendedora.Acciones\bin\Debug\Expendedora.Acciones.dll
+C:\Users\renar\Desktop\CAI\QuintaClase\877071_CAI_Expendedora\Expendedora\Expendedora.Acciones\bin\Debug\Expendedora.Acciones.pdb
+C:\Users\renar\Desktop\CAI\QuintaClase\877071_CAI_Expendedora\Expendedora\Expendedora.Acciones\obj\Debug\Expendedora.Acciones.csproj.CoreCompileInputs.cache
+C:\Users\renar\Desktop\CAI\QuintaClase\877071_CAI_Expendedora\Expendedora\Expendedora.Acciones\obj\Debug\Expendedora.Acciones.dll
+C:\Users\renar\Desktop\CAI\QuintaClase\877071_CAI_Expendedora\Expendedora\Expendedora.Acciones\obj\Debug\Expendedora.Acciones.pdb
+C:\Users\renar\Desktop\CAI\QuintaClase\877071_CAI_Expendedora\Expendedora\Expendedora.Acciones\obj\Debug\Expendedora.Acciones.csprojAssemblyReference.cache
