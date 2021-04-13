@@ -9,13 +9,17 @@ namespace Expendedora.Libreria.Entidades
 {
     public class Controlador
     {
-        bool _maquina = false;
+        bool _encendida = false;
+        public List<Lata> _latas = new List<Lata>();
+        private string _proveedor;
+        private int _capacidad;
+        private double _dinero;
+
         public Controlador()
         {
 
         }
 
-        public List<Lata> _latas = new List<Lata>();
         public void MostrarLatas(out string msg)
         {
             msg = "";
@@ -36,7 +40,7 @@ namespace Expendedora.Libreria.Entidades
         }
         public void AgregarLata(Lata L)
         {
-            if (_maquina)
+            if (_encendida)
             {
                if (!BuscarLata(L.Codigo))
                 {
@@ -96,9 +100,9 @@ namespace Expendedora.Libreria.Entidades
         }
         public void EncenderMaquina()
         {
-            if (!_maquina)
+            if (!_encendida)
             {
-                _maquina = true;
+                _encendida = true;
             }
             return;
         }
@@ -119,7 +123,7 @@ namespace Expendedora.Libreria.Entidades
         }
         public void PedirDatos(out Lata L)
         {      
-            if (_maquina)
+            if (_encendida)
             {
             Lata L_new = new Lata();
             L = L_new;
