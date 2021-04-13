@@ -9,6 +9,7 @@ namespace Expendedora.Libreria.Entidades
 {
     public class Controlador
     {
+        bool _maquina = false;
         public Controlador()
         {
 
@@ -37,7 +38,10 @@ namespace Expendedora.Libreria.Entidades
         }
         public void EncenderMaquina()
         {
-            bool flag;
+            if (!_maquina)
+            {
+                _maquina = true;
+            }
             return;
         }
 

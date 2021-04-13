@@ -13,7 +13,9 @@ namespace Expendedora.Consola
         static void Main(string[] args)
         {
             bool flag = true;
+
             string _respuesta="";
+
             Lata L = new Lata();
             Controlador C = new Controlador();
             while (flag)
@@ -30,6 +32,16 @@ namespace Expendedora.Consola
                 try
                 {
                 C.SeleccionarOpcion(_respuesta);
+
+                switch (_respuesta)
+                    {
+                        case "1": C.EncenderMaquina();
+                            Console.WriteLine("La máquina fue encendida a las: " + System.DateTime.Now);
+                            Console.ReadLine();
+                            break;
+                        default:
+                            break;
+                    }
                     flag = false;
                 }
                 catch (OperacionInvalida Ex1)
